@@ -24,10 +24,11 @@
     <div>
       <input
         type="text"
-        id=""
+        id="backlog"
         class="my-2 rounded-md border border-gray-800 bg-neutral-900 p-3 pr-96 placeholder-white"
         placeholder="What should I do today?..."
       />
+      <button type="button" onclick="addTask()" class="ml-4">Submit</button>
     </div>
 
     <div class="flex flex-row justify-between">
@@ -35,7 +36,7 @@
         <span class="rounded-md bg-cyan-900 p-1 font-semibold text-cyan-500"
           >Back Log</span
         >
-        <div class="mt-4 flex flex-col font-medium">
+        <div class="mt-4 flex flex-col font-medium" id="taskList">
           <button class="my-1 rounded-md bg-zinc-800 p-2 pr-36">
             SF: RC relase on 2023
           </button>
@@ -86,5 +87,7 @@
         </div>
       </div>
     </div>
+
+    <script src="/UI/JS/script.js"></script>
   </body>
 </html>
