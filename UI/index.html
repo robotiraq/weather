@@ -12,7 +12,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="Styles/styles.css" />
-
+    <script src="/UI/JS/tailwind.js"></script>
     <title>Document</title>
   </head>
   <body class="container m-auto bg-neutral-900 pt-10 text-white">
@@ -21,14 +21,22 @@
       <h2 class="pl-3 text-4xl">Ibrahim</h2>
     </div>
 
-    <div>
+    <div class="flex flex-row items-center">
       <input
         type="text"
         id="backlog"
-        class="my-2 rounded-md border border-gray-800 bg-neutral-900 p-3 pr-96 placeholder-white"
+        class="my-2 rounded-md border border-gray-800 bg-neutral-900 p-3 placeholder-white w-full basis-1/2 focus:outline-none"
         placeholder="What should I do today?..."
       />
-      <button type="button" onclick="addTask()" class="ml-4">Submit</button>
+      <div class="ml-4 basis-1/12">
+        <button
+          type="button"
+          onclick="addTask()"
+          class="border-gray-800 border rounded-md p-3"
+        >
+          Submit
+        </button>
+      </div>
     </div>
 
     <div class="flex flex-row justify-between">
