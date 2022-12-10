@@ -24,9 +24,10 @@
     <div class="flex flex-row items-center">
       <input
         type="text"
-        id="submitButton"
+        id="inputField"
         class="my-2 rounded-md border border-gray-800 bg-neutral-900 p-3 placeholder-white w-full basis-1/2 focus:outline-none"
         placeholder="What should I do today?..."
+        required
       />
       <div class="ml-4 basis-1/12">
         <button
@@ -39,63 +40,27 @@
       </div>
     </div>
 
-    <div class="flex flex-row justify-between">
+    <div class="grid grid-cols-3 mt-4" id="tasks">
       <div class="my-3">
         <span class="rounded-md bg-cyan-900 p-1 font-semibold text-cyan-500"
           >Back Log</span
         >
-        <div class="mt-4 flex flex-col font-medium" id="backLog">
-          <button class="my-1 rounded-md bg-zinc-800 p-2 pr-36">
-            SF: RC relase on 2023
-          </button>
-          <button class="my-1 rounded-md bg-zinc-800 p-2 pr-36">
-            SF: RC relase on 2023
-          </button>
-          <button class="my-1 rounded-md bg-zinc-800 p-2 pr-36">
-            SF: RC relase on 2023
-          </button>
-          <button class="my-1 rounded-md bg-zinc-800 p-2 pr-36">
-            SF: RC relase on 2023
-          </button>
-          <button class="my-1 rounded-md bg-zinc-800 p-2 pr-36">
-            SF: RC relase on 2023
-          </button>
-          <button class="my-1 rounded-md bg-zinc-800 p-2 pr-36">
-            SF: RC relase on 2023
-          </button>
-        </div>
+        <div class="mt-4 flex flex-col font-medium" id="backlog"></div>
       </div>
       <div class="my-3">
         <span class="rounded-md bg-yellow-900 p-1 font-semibold text-yellow-300"
           >In Progress</span
         >
-        <div class="mt-4 flex flex-col font-medium" id="inProgress">
-          <button class="my-1 rounded-md bg-zinc-800 p-2 pr-36">
-            SF: RC relase on 2023
-          </button>
-          <button class="my-1 rounded-md bg-zinc-800 p-2 pr-36">
-            SF: RC relase on 2023
-          </button>
-        </div>
+        <div class="mt-4 flex flex-col font-medium" id="inProgress"></div>
       </div>
       <div class="my-3">
         <span class="rounded-md bg-green-900 p-1 font-semibold text-green-500"
           >Completed</span
         >
-        <div class="mt-4 flex flex-col font-medium">
-          <button class="my-1 rounded-md bg-zinc-800 p-2 pr-36">
-            SF: RC relase on 2023
-          </button>
-          <button class="my-1 rounded-md bg-zinc-800 p-2 pr-36">
-            SF: RC relase on 2023
-          </button>
-          <button class="my-1 rounded-md bg-zinc-800 p-2 pr-36">
-            SF: RC relase on 2023
-          </button>
-        </div>
+        <div class="mt-4 flex flex-col font-medium" id="completed"></div>
       </div>
     </div>
 
-    <script src="/UI/JS/script.js"></script>
+    <script src="/Project Charlo/js/script.js"></script>
   </body>
 </html>
