@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Document</title>
+  </head>
+  <body class="bg-slate-900 text-white website">
+    <h2 class="text-6xl">Charlo Movie DB</h2>
+    <div class="m-auto flex justify-center">
+      <input
+        type="text"
+        id="inputField"
+        class="my-2 rounded-md border border-gray-800 bg-neutral-900 p-3 placeholder-white focus:outline-none"
+        placeholder="Search for movie"
+        required
+      />
+      <button
+        type="button"
+        onclick="addTask()"
+        class="border-gray-800 border rounded-md p-3 m-2"
+      >
+        Search
+      </button>
+    </div>
+    <ul id="Movies" class="grid grid-cols-4 gap-4 items-start"></ul>
+
+    <script src="/Project Charlo/js/API.js"></script>
+  </body>
+</html>
