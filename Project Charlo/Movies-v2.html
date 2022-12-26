@@ -11,9 +11,11 @@
   </head>
   <body class="text-white">
     <div id="vue">
-      <h1 class="text-6xl mb-6">The Movie DB</h1>
-      <div class="w-4/12 m-auto flex flex-row justify-center items-center">
+      <div
+        class="w-4/12 m-auto mt-20 flex flex-row justify-center items-center"
+      >
         <input
+          v-model="movieQuery"
           type="text"
           id="inputField"
           class="rounded-md border border-gray-800 bg-neutral-900 p-3 w-full placeholder-white basis-1/2 focus:outline-none mr-2"
@@ -65,7 +67,7 @@
         <!-- Vue -->
         <div>
           <div
-            class="flex flex-col max-h-screen overflow-y-auto overflow-x-hidden container"
+            class="flex flex-col max-h-screen overflow-auto pt-3 px-32 container"
           >
             <div
               v-for="(movie,index) in movies"
@@ -94,7 +96,7 @@
             v-for="(_,index) in Array(pageCount).fill(null)"
             :key="index"
           >
-            {{index + 1}}
+            {{index+1}}
           </button>
         </div>
       </div>
