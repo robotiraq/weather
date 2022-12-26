@@ -1,0 +1,25 @@
+body {
+  background-image: url(/images/got.jpeg);
+}
+.title {
+  width: 46ch;
+}
+.blocks {
+  width: 100vw;
+  height: 200px;
+  background: rgb(0, 0, 0);
+  background: linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.7710434515603116) 19%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  position: fixed;
+  bottom: 0;
+}
+.container {
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+  scrollbar-width: none; /* Firefox */
+}
+.container::-webkit-scrollbar {
+  display: none; /* Safari and Chrome */
+}

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="Styles/UI.css" />
+
+    <title>Document</title>
+  </head>
+  <body class="text-white">
+    <div id="vue">
+      <h1 class="text-6xl mb-6">The Movie DB</h1>
+      <div class="w-4/12 m-auto flex flex-row justify-center items-center">
+        <input
+          type="text"
+          id="inputField"
+          class="rounded-md border border-gray-800 bg-neutral-900 p-3 w-full placeholder-white basis-1/2 focus:outline-none mr-2"
+          placeholder="Search for Movie or Series"
+          required
+        />
+        <button
+          type="button"
+          @click="input()"
+          class="mr-4 bg-sky-500 px-4 py-2 rounded-lg"
+        >
+          Submit
+        </button>
+      </div>
+      <div class="grid grid-cols-3 place-items-center justify-items-center">
+        <div class="m-2 justify-self-center">
+          <div class="flex flex-row items-center">
+            <p class="mr-4">{{selectedMovie.Genre}}</p>
+            <p class="mr-4">{{selectedMovie.Year}}</p>
+            <p class="">{{selectedMovie.Rated}}</p>
+          </div>
+          <div class="flex flex-row items-center">
+            <h3 class="text-4xl mr-4 my-2 text">{{selectedMovie.Title}}</h3>
+            <div
+              class="bg-yellow-300 rounded-md p-2 text-black flex flex-row items-center"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                class="bi bi-star-fill"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"
+                />
+              </svg>
+              <p class="ml-2">{{selectedMovie.imdbRating}}</p>
+            </div>
+          </div>
+          <div class="flex flex-row">
+            <button class="mr-4 bg-sky-500 px-4 py-3 rounded-lg">
+              Continue
+            </button>
+            <button class="bg-slate-600 px-7 py-3 rounded-lg">Trailer</button>
+          </div>
+        </div>
+        <!-- Vue -->
+        <div>
+          <div
+            class="flex flex-col max-h-screen overflow-y-auto overflow-x-hidden container"
+          >
+            <div
+              v-for="(movie,index) in movies"
+              :key="index"
+              @click="selectMovie(movie.imdbID)"
+              class=""
+            >
+              <div
+                class="flex flex-wrap m-4 hover:scale-125 transition ease-in-out bg-black rounded-lg hover:bg-white hover:text-black hover:cursor-pointer"
+              >
+                <div
+                  class="w-1/4 h-40 bg-cover rounded-l-lg"
+                  :style="`background-image: url(${movie.Poster})`"
+                ></div>
+                <div class="flex flex-row justify-between items-center w-3/4">
+                  <p class="m-5 break-normal title">{{movie.Title}}</p>
+                  <p class="mr-4">{{movie.Year}}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="flex flex-col">
+          <button
+            @click="page(index+1)"
+            v-for="(_,index) in Array(pageCount).fill(null)"
+            :key="index"
+          >
+            {{index + 1}}
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- Vue -->
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.14/dist/vue.js"></script>
+    <script src="/Project Charlo/js/Movies-v2-script.js"></script>
+  </body>
+</html>
