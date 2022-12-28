@@ -10,6 +10,7 @@ const vue = new window.Vue({
     pageCount: 0,
     searchResult: "",
     movieQuery: "",
+    showButtons: false,
   }),
   methods: {
     input() {
@@ -36,6 +37,7 @@ const vue = new window.Vue({
         .then((imdbdata) => {
           this.selectedMovie = imdbdata;
         });
+      this.showButtons = true;
     },
     page(pageNumber) {
       let pageCounter =
