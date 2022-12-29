@@ -11,8 +11,10 @@
   </head>
   <body class="text-white">
     <div id="vue">
+      <!-- Block 1 -->
+      <!-- Search input -->
       <div
-        class="w-4/12 m-auto mt-20 flex flex-row justify-center items-center"
+        class="w-4/12 m-auto mt-20 mb-4 flex flex-row justify-center items-center"
       >
         <input
           v-model="movieQuery"
@@ -30,6 +32,7 @@
           Submit
         </button>
       </div>
+      <!-- End End End -->
       <div class="grid grid-cols-7 place-items-center justify-items-center">
         <div class="m-2 justify-self-center col-span-3">
           <div class="flex flex-row items-center">
@@ -65,11 +68,10 @@
             <button class="bg-slate-600 px-7 py-3 rounded-lg">Trailer</button>
           </div>
         </div>
-        <!-- Vue -->
+        <!-- Movie result -->
+        <!-- Black cards -->
         <div class="col-span-3">
-          <div
-            class="flex flex-col max-h-screen overflow-auto pt-3 px-32 container"
-          >
+          <div class="flex flex-col max-h-screen overflow-auto container">
             <div
               v-for="(movie,index) in movies"
               :key="index"
@@ -77,15 +79,14 @@
               class=""
             >
               <div
-                class="flex flex-wrap m-4 hover:scale-125 transition ease-in-out bg-black rounded-lg hover:bg-white hover:text-black hover:cursor-pointer"
+                class="grid grid-cols-6 m-4 hover:scale-125 transition ease-in-out bg-black rounded-lg hover:bg-white hover:text-black hover:cursor-pointer items-center"
               >
                 <div
-                  class="w-1/4 max-w-sm h-40 bg-cover rounded-l-lg"
+                  class="h-40 bg-cover rounded-l-lg col-span-2"
                   :style="`background-image: url(${movie.Poster})`"
                 ></div>
-                <div class="flex flex-row justify-between items-center w-3/4">
-                  <p class="m-5">{{movie.Title}}</p>
-                  <p class="mr-4">{{movie.Year}}</p>
+                <div class="col-span-4">
+                  <p class="mx-3">{{movie.Title}}</p>
                 </div>
               </div>
             </div>
@@ -93,7 +94,7 @@
         </div>
         <div class="flex flex-col">
           <button
-            class="hover:bg-teal-800 p-2 rounded"
+            class="hover:bg-teal-800 p-2 rounded text-3xl"
             @click="page(index+1)"
             v-for="(_,index) in Array(pageCount).slice(0, 5)"
             :key="index"
@@ -103,7 +104,6 @@
         </div>
       </div>
     </div>
-    <!-- Vue neo-->
 
     <script src="https://cdn.jsdelivr.net/npm/vue@2.7.14/dist/vue.js"></script>
     <script src="/Project Charlo/js/Movies-v2-script.js"></script>
