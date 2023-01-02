@@ -14,23 +14,28 @@
       <!-- Block 1 -->
       <!-- Search input -->
       <div
-        class="w-4/12 m-auto mt-20 mb-4 flex flex-row justify-center items-center"
+        class="w-2/12 m-auto mt-20 mb-4 flex flex-row items-center rounded-lg bg-neutral-900 p-3"
       >
         <input
+          @keyup.enter="input()"
           v-model="movieQuery"
           type="text"
           id="inputField"
-          class="rounded-md border border-gray-800 bg-neutral-900 p-3 w-full placeholder-white basis-1/2 focus:outline-none mr-2"
+          class="w-full bg-neutral-900 rounded-lg placeholder-white focus:outline-none"
           placeholder="Search for Movie or Series"
           required
         />
-        <button
-          type="button"
-          @click="input()"
-          class="mr-4 bg-sky-500 px-4 py-2 rounded-lg"
+        <svg
+          class="fill-white"
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
         >
-          Submit
-        </button>
+          <path
+            d="M23.809 21.646l-6.205-6.205c1.167-1.605 1.857-3.579 1.857-5.711 0-5.365-4.365-9.73-9.731-9.73-5.365 0-9.73 4.365-9.73 9.73 0 5.366 4.365 9.73 9.73 9.73 2.034 0 3.923-.627 5.487-1.698l6.238 6.238 2.354-2.354zm-20.955-11.916c0-3.792 3.085-6.877 6.877-6.877s6.877 3.085 6.877 6.877-3.085 6.877-6.877 6.877c-3.793 0-6.877-3.085-6.877-6.877z"
+          />
+        </svg>
       </div>
       <!-- End End End -->
       <div class="grid grid-cols-7 place-items-center justify-items-center">
@@ -71,22 +76,32 @@
         <!-- Movie result -->
         <!-- Black cards -->
         <div class="col-span-3">
-          <div class="flex flex-col max-h-screen overflow-auto container">
+          <div class="flex flex-col max-h-screen container">
             <div
               v-for="(movie,index) in movies"
               :key="index"
               @click="selectMovie(movie.imdbID)"
-              class=""
             >
               <div
-                class="grid grid-cols-6 m-4 hover:scale-125 transition ease-in-out bg-black rounded-lg hover:bg-white hover:text-black hover:cursor-pointer items-center"
+                class="group grid grid-cols-6 m-5 hover:scale-125 transition ease-in-out bg-black rounded-lg hover:bg-white hover:text-black hover:cursor-pointer items-center"
               >
                 <div
                   class="h-40 bg-cover rounded-l-lg col-span-2"
                   :style="`background-image: url(${movie.Poster})`"
                 ></div>
-                <div class="col-span-4">
-                  <p class="mx-3">{{movie.Title}}</p>
+                <div class="col-span-4 grid grid-cols-4 items-center">
+                  <p class="mx-3 col-span-3">{{movie.Title}}</p>
+                  <svg
+                    @click="setFavorite(movie.imdbID)"
+                    class="w-9 group-hover:scale-150 transition ease-in-out hover:cursor-pointer fill-slate-400"
+                    :class="favoriteMovie.includes(movie.imdbID)?'fill-red-600 active::fill-slate-400':''"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M12 4.248c-3.148-5.402-12-3.825-12 2.944 0 4.661 5.571 9.427 12 15.808 6.43-6.381 12-11.147 12-15.808 0-6.792-8.875-8.306-12-2.944z"
+                    />
+                  </svg>
                 </div>
               </div>
             </div>

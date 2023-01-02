@@ -11,7 +11,15 @@ const vue = new window.Vue({
     searchResult: "",
     movieQuery: "",
     showButtons: false,
+    favoriteButton: "",
+    favoriteMovie: [],
   }),
+  created() {
+    let favoriteMovieStorage = JSON.parse(
+      localStorage.getItem("storage") || "[]"
+    );
+    this.favoriteMovie = favoriteMovieStorage;
+  },
   methods: {
     input() {
       this.searchResult = this.movieQuery;
@@ -55,6 +63,17 @@ const vue = new window.Vue({
           this.movies = data.Search;
           this.selectMovie(this.movies[0].imdbID);
         });
+    },
+    setFavorite(favMovie) {
+      let favChecker = this.favoriteMovie.find((el) => el == favMovie);
+      if (favMovie == favChecker) {
+        this.favoriteMovie = this.favoriteMovie.filter(function (item) {
+          return item !== favMovie;
+        });
+      } else {
+        this.favoriteMovie.splice(0, 0, favMovie);
+      }
+      localStorage.setItem("storage", JSON.stringify(this.favoriteMovie));
     },
   },
 });
