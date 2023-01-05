@@ -13,12 +13,10 @@ const vue = new window.Vue({
     showButtons: false,
     favoriteButton: "",
     favoriteMovie: [],
+    showFav: false,
   }),
   created() {
-    let favoriteMovieStorage = JSON.parse(
-      localStorage.getItem("storage") || "[]"
-    );
-    this.favoriteMovie = favoriteMovieStorage;
+    this.favoriteMovie = JSON.parse(localStorage.getItem("storage") || "[]");
   },
   methods: {
     input() {
@@ -65,15 +63,17 @@ const vue = new window.Vue({
         });
     },
     setFavorite(favMovie) {
-      let favChecker = this.favoriteMovie.find((el) => el == favMovie);
-      if (favMovie == favChecker) {
-        this.favoriteMovie = this.favoriteMovie.filter(function (item) {
-          return item !== favMovie;
-        });
+      let index = this.favoriteMovie.indexOf(favMovie);
+      console.log(index);
+      if (this.favoriteMovie.some((e) => e.imdbID == favMovie.imdbID)) {
+        this.favoriteMovie.splice(index, 1);
       } else {
         this.favoriteMovie.splice(0, 0, favMovie);
       }
       localStorage.setItem("storage", JSON.stringify(this.favoriteMovie));
+    },
+    favButtonToggler() {
+      this.showFav = !this.showFav;
     },
   },
 });

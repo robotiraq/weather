@@ -12,30 +12,69 @@
   <body class="text-white">
     <div id="vue">
       <!-- Block 1 -->
-      <!-- Search input -->
+
       <div
-        class="w-2/12 m-auto mt-20 mb-4 flex flex-row items-center rounded-lg bg-neutral-900 p-3"
+        v-show="showFav"
+        class="w-56 flex flex-col items-center h-full bg-amber-300 rounded-lg z-10 fixed top-0 left-0"
       >
-        <input
-          @keyup.enter="input()"
-          v-model="movieQuery"
-          type="text"
-          id="inputField"
-          class="w-full bg-neutral-900 rounded-lg placeholder-white focus:outline-none"
-          placeholder="Search for Movie or Series"
-          required
-        />
-        <svg
-          class="fill-white"
-          xmlns="http://www.w3.org/2000/svg"
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
+        <div v-for="(movie,index) in favoriteMovie" :key="index">
+          <div
+            class="flex flex-row m-5 hover:scale-125 transition ease-in-out rounded-lg"
+          >
+            <img
+              @click="selectMovie(movie.imdbID)"
+              :src="movie.Poster"
+              alt=""
+              class="h-40 object-cover rounded-lg row-span-5 mr-2"
+            />
+            <svg
+              @click="setFavorite(movie)"
+              class="w-9 group-hover:scale-150 transition ease-in-out hover:cursor-pointer fill-slate-400"
+              :class="favoriteMovie.some(e => e.imdbID === movie.imdbID)?'fill-red-600 active:fill-slate-400':''"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M12 4.248c-3.148-5.402-12-3.825-12 2.944 0 4.661 5.571 9.427 12 15.808 6.43-6.381 12-11.147 12-15.808 0-6.792-8.875-8.306-12-2.944z"
+              />
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- Search input -->
+      <div class="flex flex-row m-auto justify-center mt-20 w-1/4 mb-4">
+        <button
+          class="m-auto text-black rounded-lg font-bold bg-amber-300 p-2"
+          @click="favButtonToggler"
         >
-          <path
-            d="M23.809 21.646l-6.205-6.205c1.167-1.605 1.857-3.579 1.857-5.711 0-5.365-4.365-9.73-9.731-9.73-5.365 0-9.73 4.365-9.73 9.73 0 5.366 4.365 9.73 9.73 9.73 2.034 0 3.923-.627 5.487-1.698l6.238 6.238 2.354-2.354zm-20.955-11.916c0-3.792 3.085-6.877 6.877-6.877s6.877 3.085 6.877 6.877-3.085 6.877-6.877 6.877c-3.793 0-6.877-3.085-6.877-6.877z"
+          <span v-if="showFav">Hide Favorite</span>
+          <span v-else>Show Favorite</span>
+        </button>
+        <div
+          class="w-3/4 flex flex-row items-center rounded-lg bg-neutral-900 p-3"
+        >
+          <input
+            @keyup.enter="input()"
+            v-model="movieQuery"
+            type="text"
+            id="inputField"
+            class="w-full bg-neutral-900 rounded-lg placeholder-white focus:outline-none"
+            placeholder="Search for Movie or Series"
+            required
           />
-        </svg>
+          <svg
+            class="fill-white"
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M23.809 21.646l-6.205-6.205c1.167-1.605 1.857-3.579 1.857-5.711 0-5.365-4.365-9.73-9.731-9.73-5.365 0-9.73 4.365-9.73 9.73 0 5.366 4.365 9.73 9.73 9.73 2.034 0 3.923-.627 5.487-1.698l6.238 6.238 2.354-2.354zm-20.955-11.916c0-3.792 3.085-6.877 6.877-6.877s6.877 3.085 6.877 6.877-3.085 6.877-6.877 6.877c-3.793 0-6.877-3.085-6.877-6.877z"
+            />
+          </svg>
+        </div>
       </div>
       <!-- End End End -->
       <div class="grid grid-cols-7 place-items-center justify-items-center">
@@ -92,9 +131,9 @@
                 <div class="col-span-4 grid grid-cols-4 items-center">
                   <p class="mx-3 col-span-3">{{movie.Title}}</p>
                   <svg
-                    @click="setFavorite(movie.imdbID)"
+                    @click="setFavorite(movie)"
                     class="w-9 group-hover:scale-150 transition ease-in-out hover:cursor-pointer fill-slate-400"
-                    :class="favoriteMovie.includes(movie.imdbID)?'fill-red-600 active::fill-slate-400':''"
+                    :class="favoriteMovie.some(e => e.imdbID === movie.imdbID)?'fill-red-600 active:fill-slate-400':''"
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 24 24"
                   >
