@@ -18,7 +18,7 @@
     <div
       v-if="isFetched"
       id="vue"
-      :style="`background: url(${selectBackground(weatherResponse.current.condition.text)})`"
+      :style="`background: url(${selectBackground(weatherResponse.current.condition.text)}); background-size: cover;`"
       class="grid grid-cols-5 transition-all ease-in duration-700"
     >
       <div class="col-span-3 justify-items-center">
