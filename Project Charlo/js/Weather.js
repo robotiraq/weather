@@ -1,6 +1,7 @@
 let weatherAPI =
-  "https://api.weatherapi.com/v1/current.json?key=e0305ee9ac75401a9c7202316230701&";
+  "https://api.weatherapi.com/v1/forecast.json?key=e0305ee9ac75401a9c7202316230701&";
 let weatherAPIquery = "q=";
+let forcastDays = "&days=5";
 
 const vue = new window.Vue({
   el: "#vue",
@@ -27,13 +28,22 @@ const vue = new window.Vue({
       "Sulaymaniyah",
       "Wasit",
     ],
+    days: [
+      "Sunday",
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday",
+    ],
   }),
   created() {
     this.searchForWeather(this.cities[0]);
   },
   methods: {
     searchForWeather(city) {
-      fetch(weatherAPI + weatherAPIquery + city)
+      fetch(weatherAPI + weatherAPIquery + city + forcastDays)
         .then((response) => {
           return response.json();
         })
