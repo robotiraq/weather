@@ -15,7 +15,11 @@
     <title>Document</title>
   </head>
   <body class="bg-black text-white">
-    <div id="vue" class="grid grid-cols-5">
+    <div
+      id="vue"
+      :style="`background: url(${selectBackground(weatherResponse.current.condition.text)})`"
+      class="grid grid-cols-5 transition-all ease-in duration-700"
+    >
       <div class="col-span-3 grid grid-cols-5 justify-items-center">
         <div class="col-span-3 flex flex-col justify-around">
           <h1 class="text-4xl">Iraq Weather</h1>
@@ -62,50 +66,9 @@
           <ul
             class="font-medium bg-black pl-6 py-5 pr-40 rounded-lg bg-opacity-10"
           >
-            <li>
-              <button class="" @click="searchForWeather('Baghdad')">
-                Baghdad
-              </button>
+            <li v-for="city in cities" class="" @click="searchForWeather(city)">
+              <button>{{city}}</button>
             </li>
-            <li><button @click="searchForWeather('Basra')">Basra</button></li>
-            <li><button @click="searchForWeather('Erbil')">Erbil</button></li>
-            <li>
-              <button @click="searchForWeather('Al-Anbar')">Al-Anbar</button>
-            </li>
-            <li>
-              <button @click="searchForWeather('Dhi Qar')">Dhi Qar</button>
-            </li>
-            <li>
-              <button @click="searchForWeather('Al-Qādisiyyah')">
-                Al-Qādisiyyah
-              </button>
-            </li>
-            <li><button @click="searchForWeather('Diyala')">Diyala</button></li>
-            <li><button @click="searchForWeather('Duhok')">Duhok</button></li>
-            <li>
-              <button @click="searchForWeather('Karbala')">Karbala</button>
-            </li>
-            <li><button @click="searchForWeather('Kirkuk')">Kirkuk</button></li>
-            <li><button @click="searchForWeather('Maysan')">Maysan</button></li>
-            <li>
-              <button @click="searchForWeather('Muthanna')">Muthanna</button>
-            </li>
-            <li><button @click="searchForWeather('Najaf')">Najaf</button></li>
-            <li><button @click="searchForWeather('Ninawa')">Ninawa</button></li>
-            <li>
-              <button @click="searchForWeather('Salah Al-Din')">
-                Salah Al-Din
-              </button>
-            </li>
-            <li>
-              <button @click="searchForWeather('Sulaymaniyah')">
-                Sulaymaniyah
-              </button>
-            </li>
-            <li>
-              <button @click="searchForWeather('Wasit')">Wasit</button>
-            </li>
-            <li></li>
           </ul>
 
           <ul v-if="isFetched" class="font-semibold border-t-2 mt-4">

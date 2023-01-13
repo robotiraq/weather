@@ -8,8 +8,29 @@ const vue = new window.Vue({
     weatherResponse: {},
     weatherAPIcity: "",
     isFetched: false,
+    cities: [
+      "Baghdad",
+      "Basra",
+      "Erbil",
+      "Al-Anbar",
+      "Dhi Qar",
+      "Al-Qādisiyyah",
+      "Diyala",
+      "Duhok",
+      "Karbala",
+      "Kirkuk",
+      "Maysan",
+      "Muthanna",
+      "Najaf",
+      "Ninawa",
+      "Salah Al-Din",
+      "Sulaymaniyah",
+      "Wasit",
+    ],
   }),
-  created() {},
+  created() {
+    this.searchForWeather(this.cities[0]);
+  },
   methods: {
     searchForWeather(city) {
       fetch(weatherAPI + weatherAPIquery + city)
@@ -21,6 +42,15 @@ const vue = new window.Vue({
           console.log(this.weatherResponse);
           this.isFetched = true;
         });
+    },
+    selectBackground(wew) {
+      if (wew == "Mist" || wew == "Fog") {
+        return "/images/bg-mist.jpg";
+      } else if (wew == "Clear") {
+        return "/images/bg-clear.jpg";
+      } else {
+        return "/images/bg.jpg";
+      }
     },
   },
 });
