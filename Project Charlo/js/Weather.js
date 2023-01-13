@@ -55,11 +55,11 @@ const vue = new window.Vue({
     },
     selectBackground(wew) {
       if (wew == "Mist" || wew == "Fog") {
-        return "/images/bg-mist.jpg";
+        return "images/bg-mist.jpg";
       } else if (wew == "Clear") {
-        return "/images/bg-clear.jpg";
+        return "images/bg-clear.jpg";
       } else {
-        return "/images/bg.jpg";
+        return "images/bg.jpg";
       }
     },
   },
