@@ -56,7 +56,7 @@ const vue = new window.Vue({
     selectBackground(wew) {
       if (wew == "Mist" || wew == "Fog") {
         return "images/bg-mist.jpg";
-      } else if (wew == "Clear") {
+      } else if (wew == "Clear" || wew == "Sunny") {
         return "images/bg-clear.jpg";
       } else {
         return "images/bg.jpg";
