@@ -13,10 +13,6 @@
 
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="Styles/Weather.css" />
-    <link
-      href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.2/flowbite.min.css"
-      rel="stylesheet"
-    />
     <title>ابة نيو</title>
   </head>
   <body class="bg-black text-white">
@@ -32,14 +28,14 @@
         Iraq Weather
       </h1>
       <!-- Dropdown Menu  Start -->
-      <div class="text-center my-6 xl:hidden">
+      <div class="flex flex-col items-center text-center my-6 xl:hidden">
         <button
-          id="dropdownDefaultButton"
+          @click="activateDropdown()"
           data-dropdown-toggle="dropdown"
           class="text-white border-4 bg-black rounded-lg backdrop-blur-lg backdrop-opacity-60 bg-opacity-80 hover:bg-opacity-60 font-medium text-lg px-6 sm:px-10 transition-all duration-500 py-2.5 inline-flex items-center"
           type="button"
         >
-          Select City
+          {{weatherResponse.location.name}}
           <svg
             class="w-4 h-4 ml-2"
             aria-hidden="true"
@@ -57,8 +53,9 @@
           </svg>
         </button>
         <div
+          v-show="activateCityDropdown"
           id="dropdown"
-          class="z-10 hidden bg-neutral-900 divide-y divide-gray-100 rounded-lg shadow w-80"
+          :class="`mt-2    bg-neutral-900 divide-y divide-gray-100 rounded-lg shadow w-80`"
         >
           <ul
             class="h-48 py-1 overflow-y-auto text-sm text-center text-gray-700 dark:text-gray-200"
@@ -182,6 +179,5 @@
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue@2.7.14/dist/vue.js"></script>
     <script src="js/Weather.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.2/flowbite.min.js"></script>
   </body>
 </html>

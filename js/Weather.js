@@ -37,6 +37,7 @@ const vue = new window.Vue({
       "Friday",
       "Saturday",
     ],
+    activateCityDropdown: false,
   }),
   created() {
     this.searchForWeather(this.cities[0]);
@@ -51,6 +52,7 @@ const vue = new window.Vue({
           this.weatherResponse = data;
           console.log(this.weatherResponse);
           this.isFetched = true;
+          this.activateCityDropdown = false;
         });
     },
     selectBackground(wew) {
@@ -61,6 +63,9 @@ const vue = new window.Vue({
       } else {
         return "images/bg.jpg";
       }
+    },
+    activateDropdown() {
+      this.activateCityDropdown = !this.activateCityDropdown;
     },
   },
 });
